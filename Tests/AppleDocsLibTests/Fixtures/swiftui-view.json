@@ -1,0 +1,698 @@
+{
+  "schemaVersion": {
+    "major": 0,
+    "minor": 3,
+    "patch": 0
+  },
+  "kind": "symbol",
+  "identifier": {
+    "url": "doc://com.apple.SwiftUI/documentation/SwiftUI/View",
+    "interfaceLanguage": "swift"
+  },
+  "metadata": {
+    "modules": [
+      {
+        "name": "SwiftUI"
+      }
+    ],
+    "role": "symbol",
+    "fragments": [
+      {
+        "text": "protocol",
+        "kind": "keyword"
+      },
+      {
+        "kind": "text",
+        "text": " "
+      },
+      {
+        "kind": "identifier",
+        "text": "View"
+      }
+    ],
+    "roleHeading": "Protocol",
+    "title": "View",
+    "platforms": [
+      {
+        "deprecated": false,
+        "beta": false,
+        "name": "iOS",
+        "introducedAt": "13.0",
+        "unavailable": false
+      },
+      {
+        "deprecated": false,
+        "introducedAt": "13.0",
+        "beta": false,
+        "name": "iPadOS",
+        "unavailable": false
+      },
+      {
+        "unavailable": false,
+        "beta": false,
+        "introducedAt": "13.0",
+        "deprecated": false,
+        "name": "Mac Catalyst"
+      },
+      {
+        "introducedAt": "10.15",
+        "deprecated": false,
+        "name": "macOS",
+        "unavailable": false,
+        "beta": false
+      },
+      {
+        "deprecated": false,
+        "name": "tvOS",
+        "beta": false,
+        "unavailable": false,
+        "introducedAt": "13.0"
+      },
+      {
+        "name": "visionOS",
+        "unavailable": false,
+        "beta": false,
+        "introducedAt": "1.0",
+        "deprecated": false
+      },
+      {
+        "deprecated": false,
+        "introducedAt": "6.0",
+        "beta": false,
+        "name": "watchOS",
+        "unavailable": false
+      }
+    ],
+    "navigatorTitle": [
+      {
+        "kind": "identifier",
+        "text": "View"
+      }
+    ],
+    "externalID": "s:7SwiftUI4ViewP",
+    "symbolKind": "protocol"
+  },
+  "abstract": [
+    {
+      "type": "text",
+      "text": "A type that represents part of your app’s user interface and provides"
+    },
+    {
+      "type": "text",
+      "text": " "
+    },
+    {
+      "text": "modifiers that you use to configure views.",
+      "type": "text"
+    }
+  ],
+  "hierarchy": {
+    "paths": [
+      [
+        "doc://com.apple.documentation/documentation/technologies",
+        "doc://com.apple.SwiftUI/documentation/SwiftUI"
+      ]
+    ]
+  },
+  "primaryContentSections": [
+    {
+      "declarations": [
+        {
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS",
+            "watchOS"
+          ],
+          "languages": [
+            "swift"
+          ],
+          "tokens": [
+            {
+              "kind": "attribute",
+              "text": "@"
+            },
+            {
+              "text": "MainActor",
+              "kind": "attribute",
+              "identifier": "doc://com.externally.resolved.symbol/s:ScM",
+              "preciseIdentifier": "s:ScM"
+            },
+            {
+              "text": " ",
+              "kind": "text"
+            },
+            {
+              "text": "@preconcurrency",
+              "kind": "attribute"
+            },
+            {
+              "text": " ",
+              "kind": "text"
+            },
+            {
+              "text": "protocol",
+              "kind": "keyword"
+            },
+            {
+              "text": " ",
+              "kind": "text"
+            },
+            {
+              "text": "View",
+              "kind": "identifier"
+            }
+          ]
+        }
+      ],
+      "kind": "declarations"
+    },
+    {
+      "kind": "mentions",
+      "mentions": [
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/Declaring-a-Custom-View",
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/Configuring-Views",
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/Reducing-View-Modifier-Maintenance",
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/Displaying-Data-in-Lists",
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/Migrating-to-the-SwiftUI-life-cycle",
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/Performing-a-search-operation"
+      ]
+    }
+  ],
+  "topicSections": [
+    {
+      "anchor": "Implementing-a-custom-view",
+      "title": "Implementing a custom view",
+      "identifiers": [
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/View/body-8kl5o",
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/View/Body-swift.associatedtype",
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/View/modifier(_:)"
+      ]
+    },
+    {
+      "title": "Configuring view elements",
+      "identifiers": [
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/View-Accessibility",
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/View-Appearance",
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/View-Text-and-Symbols"
+      ],
+      "anchor": "Configuring-view-elements"
+    },
+    {
+      "identifiers": [
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/View-style-modifiers",
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/View-Layout",
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/View-Graphics-and-Rendering"
+      ],
+      "anchor": "Drawing-views",
+      "title": "Drawing views"
+    }
+  ],
+  "relationshipsSections": [
+    {
+      "kind": "relationships",
+      "type": "inheritedBy",
+      "title": "Inherited By",
+      "identifiers": [
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/DynamicViewContent",
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/InsettableShape",
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/NSViewControllerRepresentable"
+      ]
+    }
+  ],
+  "seeAlsoSections": [
+    {
+      "generated": true,
+      "title": "Creating a view",
+      "anchor": "Creating-a-view",
+      "identifiers": [
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/Declaring-a-Custom-View",
+        "doc://com.apple.SwiftUI/documentation/SwiftUI/ViewBuilder"
+      ]
+    }
+  ],
+  "sections": [],
+  "references": {
+    "doc://com.apple.SwiftUI/documentation/SwiftUI/View/body-8kl5o": {
+      "title": "body",
+      "type": "topic",
+      "identifier": "doc://com.apple.SwiftUI/documentation/SwiftUI/View/body-8kl5o",
+      "url": "/documentation/swiftui/view/body-8kl5o",
+      "abstract": [
+        {
+          "text": "The content and behavior of the view.",
+          "type": "text"
+        }
+      ],
+      "fragments": [
+        {
+          "text": "var",
+          "kind": "keyword"
+        },
+        {
+          "kind": "text",
+          "text": " "
+        },
+        {
+          "text": "body",
+          "kind": "identifier"
+        },
+        {
+          "kind": "text",
+          "text": ": "
+        },
+        {
+          "text": "Self",
+          "kind": "typeIdentifier"
+        },
+        {
+          "text": ".",
+          "kind": "text"
+        },
+        {
+          "kind": "typeIdentifier",
+          "preciseIdentifier": "s:7SwiftUI4ViewP4BodyQa",
+          "text": "Body"
+        }
+      ],
+      "kind": "symbol",
+      "defaultImplementations": 6,
+      "role": "symbol",
+      "required": true
+    },
+    "doc://com.apple.documentation/documentation/technologies": {
+      "kind": "technologies",
+      "type": "topic",
+      "abstract": [
+        {
+          "type": "text",
+          "text": ""
+        }
+      ],
+      "identifier": "doc://com.apple.documentation/documentation/technologies",
+      "title": "Technologies",
+      "url": "/documentation/technologies",
+      "role": "overview"
+    },
+    "doc://com.apple.SwiftUI/documentation/SwiftUI/View-Layout": {
+      "type": "topic",
+      "title": "Layout modifiers",
+      "role": "collectionGroup",
+      "kind": "article",
+      "identifier": "doc://com.apple.SwiftUI/documentation/SwiftUI/View-Layout",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "Tell a view how to arrange itself within a view hierarchy by adjusting its size,"
+        },
+        {
+          "type": "text",
+          "text": " "
+        },
+        {
+          "text": "position, alignment, padding, and so on.",
+          "type": "text"
+        }
+      ],
+      "url": "/documentation/swiftui/view-layout"
+    },
+    "doc://com.apple.SwiftUI/documentation/SwiftUI/View-style-modifiers": {
+      "abstract": [
+        {
+          "text": "Apply built-in styles to different types of views.",
+          "type": "text"
+        }
+      ],
+      "title": "Style modifiers",
+      "url": "/documentation/swiftui/view-style-modifiers",
+      "type": "topic",
+      "role": "collectionGroup",
+      "identifier": "doc://com.apple.SwiftUI/documentation/SwiftUI/View-style-modifiers",
+      "kind": "article"
+    },
+    "doc://com.apple.SwiftUI/documentation/SwiftUI/View-Graphics-and-Rendering": {
+      "url": "/documentation/swiftui/view-graphics-and-rendering",
+      "identifier": "doc://com.apple.SwiftUI/documentation/SwiftUI/View-Graphics-and-Rendering",
+      "role": "collectionGroup",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "Affect the way the system draws a view, for example by scaling or masking a view,"
+        },
+        {
+          "type": "text",
+          "text": " "
+        },
+        {
+          "type": "text",
+          "text": "or by applying graphical effects."
+        }
+      ],
+      "type": "topic",
+      "kind": "article",
+      "title": "Graphics and rendering modifiers"
+    },
+    "doc://com.apple.SwiftUI/documentation/SwiftUI/View-Appearance": {
+      "identifier": "doc://com.apple.SwiftUI/documentation/SwiftUI/View-Appearance",
+      "url": "/documentation/swiftui/view-appearance",
+      "kind": "article",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "Configure a view’s foreground and background styles, controls, and visibility."
+        }
+      ],
+      "type": "topic",
+      "title": "Appearance modifiers",
+      "role": "collectionGroup"
+    },
+    "doc://com.apple.SwiftUI/documentation/SwiftUI/View/modifier(_:)": {
+      "fragments": [
+        {
+          "kind": "keyword",
+          "text": "func"
+        },
+        {
+          "text": " ",
+          "kind": "text"
+        },
+        {
+          "text": "modifier",
+          "kind": "identifier"
+        },
+        {
+          "text": "<",
+          "kind": "text"
+        },
+        {
+          "text": "T",
+          "kind": "genericParameter"
+        },
+        {
+          "kind": "text",
+          "text": ">("
+        },
+        {
+          "text": "T",
+          "kind": "typeIdentifier"
+        },
+        {
+          "kind": "text",
+          "text": ") -> "
+        },
+        {
+          "kind": "typeIdentifier",
+          "preciseIdentifier": "s:7SwiftUI15ModifiedContentV",
+          "text": "ModifiedContent"
+        },
+        {
+          "kind": "text",
+          "text": "<"
+        },
+        {
+          "kind": "typeIdentifier",
+          "text": "Self"
+        },
+        {
+          "text": ", ",
+          "kind": "text"
+        },
+        {
+          "text": "T",
+          "kind": "typeIdentifier"
+        },
+        {
+          "text": ">",
+          "kind": "text"
+        }
+      ],
+      "url": "/documentation/swiftui/view/modifier(_:)",
+      "role": "symbol",
+      "title": "modifier(_:)",
+      "type": "topic",
+      "identifier": "doc://com.apple.SwiftUI/documentation/SwiftUI/View/modifier(_:)",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "Applies a modifier to a view and returns a new view."
+        }
+      ],
+      "kind": "symbol"
+    },
+    "doc://com.apple.SwiftUI/documentation/SwiftUI/View/Body-swift.associatedtype": {
+      "identifier": "doc://com.apple.SwiftUI/documentation/SwiftUI/View/Body-swift.associatedtype",
+      "type": "topic",
+      "url": "/documentation/swiftui/view/body-swift.associatedtype",
+      "required": true,
+      "role": "symbol",
+      "title": "Body",
+      "fragments": [
+        {
+          "text": "associatedtype",
+          "kind": "keyword"
+        },
+        {
+          "kind": "text",
+          "text": " "
+        },
+        {
+          "kind": "identifier",
+          "text": "Body"
+        },
+        {
+          "kind": "text",
+          "text": " : "
+        },
+        {
+          "text": "View",
+          "kind": "typeIdentifier",
+          "preciseIdentifier": "s:7SwiftUI4ViewP"
+        }
+      ],
+      "kind": "symbol",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "The type of view representing the body of this view."
+        }
+      ]
+    },
+    "doc://com.apple.SwiftUI/documentation/SwiftUI/DynamicViewContent": {
+      "navigatorTitle": [
+        {
+          "kind": "identifier",
+          "text": "DynamicViewContent"
+        }
+      ],
+      "identifier": "doc://com.apple.SwiftUI/documentation/SwiftUI/DynamicViewContent",
+      "fragments": [
+        {
+          "kind": "keyword",
+          "text": "protocol"
+        },
+        {
+          "kind": "text",
+          "text": " "
+        },
+        {
+          "kind": "identifier",
+          "text": "DynamicViewContent"
+        }
+      ],
+      "abstract": [
+        {
+          "text": "A type of view that generates views from an underlying collection of data.",
+          "type": "text"
+        }
+      ],
+      "role": "symbol",
+      "type": "topic",
+      "kind": "symbol",
+      "title": "DynamicViewContent",
+      "url": "/documentation/swiftui/dynamicviewcontent"
+    },
+    "doc://com.apple.SwiftUI/documentation/SwiftUI/Declaring-a-Custom-View": {
+      "abstract": [
+        {
+          "text": "Define views and assemble them into a view hierarchy.",
+          "type": "text"
+        }
+      ],
+      "url": "/documentation/swiftui/declaring-a-custom-view",
+      "type": "topic",
+      "kind": "article",
+      "role": "article",
+      "title": "Declaring a custom view",
+      "identifier": "doc://com.apple.SwiftUI/documentation/SwiftUI/Declaring-a-Custom-View"
+    },
+    "doc://com.apple.SwiftUI/documentation/SwiftUI/InsettableShape": {
+      "type": "topic",
+      "identifier": "doc://com.apple.SwiftUI/documentation/SwiftUI/InsettableShape",
+      "kind": "symbol",
+      "fragments": [
+        {
+          "kind": "keyword",
+          "text": "protocol"
+        },
+        {
+          "kind": "text",
+          "text": " "
+        },
+        {
+          "text": "InsettableShape",
+          "kind": "identifier"
+        }
+      ],
+      "navigatorTitle": [
+        {
+          "kind": "identifier",
+          "text": "InsettableShape"
+        }
+      ],
+      "title": "InsettableShape",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "A shape type that is able to inset itself to produce another shape."
+        }
+      ],
+      "role": "symbol",
+      "url": "/documentation/swiftui/insettableshape"
+    },
+    "doc://com.apple.SwiftUI/documentation/SwiftUI/ViewBuilder": {
+      "url": "/documentation/swiftui/viewbuilder",
+      "type": "topic",
+      "role": "symbol",
+      "identifier": "doc://com.apple.SwiftUI/documentation/SwiftUI/ViewBuilder",
+      "kind": "symbol",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "A custom parameter attribute that constructs views from closures."
+        }
+      ],
+      "fragments": [
+        {
+          "kind": "keyword",
+          "text": "struct"
+        },
+        {
+          "kind": "text",
+          "text": " "
+        },
+        {
+          "text": "ViewBuilder",
+          "kind": "identifier"
+        }
+      ],
+      "navigatorTitle": [
+        {
+          "text": "ViewBuilder",
+          "kind": "identifier"
+        }
+      ],
+      "title": "ViewBuilder"
+    },
+    "doc://com.apple.SwiftUI/documentation/SwiftUI/View-Accessibility": {
+      "kind": "article",
+      "type": "topic",
+      "url": "/documentation/swiftui/view-accessibility",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "Make your SwiftUI apps accessible to everyone, including people with"
+        },
+        {
+          "text": " ",
+          "type": "text"
+        },
+        {
+          "type": "text",
+          "text": "disabilities."
+        }
+      ],
+      "title": "Accessibility modifiers",
+      "role": "collectionGroup",
+      "identifier": "doc://com.apple.SwiftUI/documentation/SwiftUI/View-Accessibility"
+    },
+    "doc://com.apple.SwiftUI/documentation/SwiftUI": {
+      "images": [
+        {
+          "type": "card",
+          "identifier": "SwiftUI-PageImage-card.png"
+        }
+      ],
+      "url": "/documentation/swiftui",
+      "type": "topic",
+      "identifier": "doc://com.apple.SwiftUI/documentation/SwiftUI",
+      "kind": "symbol",
+      "role": "collection",
+      "title": "SwiftUI",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "Declare the user interface and behavior for your app on every platform."
+        }
+      ]
+    },
+    "doc://com.apple.SwiftUI/documentation/SwiftUI/View-Text-and-Symbols": {
+      "abstract": [
+        {
+          "type": "text",
+          "text": "Manage the rendering, selection, and entry of text in your view."
+        }
+      ],
+      "role": "collectionGroup",
+      "identifier": "doc://com.apple.SwiftUI/documentation/SwiftUI/View-Text-and-Symbols",
+      "kind": "article",
+      "url": "/documentation/swiftui/view-text-and-symbols",
+      "title": "Text and symbol modifiers",
+      "type": "topic"
+    },
+    "doc://com.apple.SwiftUI/documentation/SwiftUI/NSViewControllerRepresentable": {
+      "role": "symbol",
+      "abstract": [
+        {
+          "text": "A wrapper that you use to integrate an AppKit view controller into your",
+          "type": "text"
+        },
+        {
+          "text": " ",
+          "type": "text"
+        },
+        {
+          "type": "text",
+          "text": "SwiftUI interface."
+        }
+      ],
+      "identifier": "doc://com.apple.SwiftUI/documentation/SwiftUI/NSViewControllerRepresentable",
+      "navigatorTitle": [
+        {
+          "kind": "identifier",
+          "text": "NSViewControllerRepresentable"
+        }
+      ],
+      "fragments": [
+        {
+          "text": "protocol",
+          "kind": "keyword"
+        },
+        {
+          "text": " ",
+          "kind": "text"
+        },
+        {
+          "text": "NSViewControllerRepresentable",
+          "kind": "identifier"
+        }
+      ],
+      "kind": "symbol",
+      "type": "topic",
+      "title": "NSViewControllerRepresentable",
+      "url": "/documentation/swiftui/nsviewcontrollerrepresentable"
+    }
+  }
+}
