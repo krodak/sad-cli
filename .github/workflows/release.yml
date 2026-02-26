@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-universal:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build arm64
+        run: swift build -c release --arch arm64
+
+      - name: Build x86_64
+        run: swift build -c release --arch x86_64
+
+      - name: Create universal binary
+        run: |
+          mkdir -p release
+          lipo -create \
+            .build/arm64-apple-macosx/release/ad \
+            .build/x86_64-apple-macosx/release/ad \
+            -output release/ad
+          chmod +x release/ad
+
+      - name: Create tarball
+        run: |
+          cd release
+          tar -czf ad-macos-universal.tar.gz ad
+          shasum -a 256 ad-macos-universal.tar.gz > ad-macos-universal.tar.gz.sha256
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release/ad-macos-universal.tar.gz
+            release/ad-macos-universal.tar.gz.sha256
+          generate_release_notes: true
