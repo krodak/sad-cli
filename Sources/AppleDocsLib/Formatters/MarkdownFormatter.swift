@@ -97,7 +97,7 @@ public struct MarkdownFormatter: Sendable {
             if let desc = result.description {
                 lines.append(desc)
             }
-            lines.append("URL: https://developer.apple.com\(result.url)")
+            lines.append("URL: \(result.url)")
         }
         return lines.joined(separator: "\n")
     }

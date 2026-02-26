@@ -52,9 +52,9 @@ public struct SosumiAPI: Sendable {
 
     private func parseResultBlock(_ block: String) -> SearchResult? {
         guard let title = extractTitle(from: block) else { return nil }
-        guard let path = extractHref(from: block) else { return nil }
+        guard let href = extractHref(from: block) else { return nil }
 
-        let url = "https://developer.apple.com\(path)"
+        let url = href.hasPrefix("https://") ? href : "https://developer.apple.com\(href)"
         let description = extractDescription(from: block)
         let type = extractResultType(from: block)
 
@@ -81,8 +81,11 @@ public struct SosumiAPI: Sendable {
         guard let hrefStart = block.range(of: "href=\"") else { return nil }
         let afterHref = block[hrefStart.upperBound...]
         guard let hrefEnd = afterHref.range(of: "\"") else { return nil }
-        let path = String(afterHref[..<hrefEnd.lowerBound])
-        return path.hasPrefix("/") ? path : nil
+        let href = String(afterHref[..<hrefEnd.lowerBound])
+        if href.hasPrefix("/") || href.hasPrefix("https://") {
+            return href
+        }
+        return nil
     }
 
     private func extractDescription(from block: String) -> String? {

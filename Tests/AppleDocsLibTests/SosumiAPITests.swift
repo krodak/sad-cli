@@ -7,7 +7,7 @@ import Testing
     let api = SosumiAPI()
     let results = api.parseSearchHTML(html)
 
-    #expect(results.count == 5)
+    #expect(results.count == 6)
 }
 
 @Test func parsesSearchResultTitles() throws {
@@ -20,6 +20,7 @@ import Testing
     #expect(results[2].title == "Understanding the navigation stack")
     #expect(results[3].title == "Navigation")
     #expect(results[4].title == "stack")
+    #expect(results[5].title == "NavigationPath")
 }
 
 @Test func parsesSearchResultURLs() throws {
@@ -29,6 +30,10 @@ import Testing
 
     #expect(results[0].url == "https://developer.apple.com/documentation/swiftui/navigationstack/")
     #expect(results[1].url == "https://developer.apple.com/documentation/swiftui/toolbarrole/navigationstack/")
+    #expect(results[5].url == "https://developer.apple.com/documentation/swiftui/navigationpath/")
+    for result in results {
+        #expect(!result.url.hasPrefix("https://developer.apple.comhttps://"))
+    }
 }
 
 @Test func parsesSearchResultDescriptions() throws {

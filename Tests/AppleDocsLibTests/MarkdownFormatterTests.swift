@@ -26,8 +26,8 @@ private let formatter = MarkdownFormatter()
 
 @Test func formatSearchResultsList() {
     let results = [
-        SearchResult(title: "View", url: "/documentation/swiftui/view", description: "A protocol"),
-        SearchResult(title: "Text", url: "/documentation/swiftui/text", description: "A label"),
+        SearchResult(title: "View", url: "https://developer.apple.com/documentation/swiftui/view", description: "A protocol"),
+        SearchResult(title: "Text", url: "https://developer.apple.com/documentation/swiftui/text", description: "A label"),
     ]
     let output = formatter.formatSearchResults(results)
     #expect(output.contains("# Search Results"))
@@ -35,6 +35,8 @@ private let formatter = MarkdownFormatter()
     #expect(output.contains("Text"))
     #expect(output.contains("## 1."))
     #expect(output.contains("## 2."))
+    #expect(output.contains("URL: https://developer.apple.com/documentation/swiftui/view"))
+    #expect(!output.contains("apple.comhttps://"))
 }
 
 @Test func formatEmptySearchResults() {
