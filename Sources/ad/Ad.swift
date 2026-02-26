@@ -16,6 +16,8 @@ struct Ad: AsyncParsableCommand {
             SamplesCommand.self,
             RelatedCommand.self,
             PlatformCommand.self,
+            HigCommand.self,
+            WasmCommand.self,
         ]
     )
 }
