@@ -41,7 +41,7 @@ public struct SwiftWasmAPI: Sendable {
         var lines: [String] = []
         lines.append("# SwiftWasm Book")
         lines.append("")
-        lines.append("Available pages (use slug with `ad wasm <slug>`):")
+        lines.append("Available pages (use slug with `sad wasm <slug>`):")
         lines.append("")
         for page in Self.pages {
             lines.append("- **\(page.slug)** - \(page.title)")

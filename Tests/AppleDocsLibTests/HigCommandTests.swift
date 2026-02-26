@@ -17,8 +17,17 @@ import Testing
     #expect(path == "/design/human-interface-guidelines/navigation-bars")
 }
 
-@Test func higPathProducesValidURL() {
-    let path = HigCommand.higPath(for: "color")
-    let url = SosumiAPI.docMarkdownURL(path: path)
-    #expect(url == "https://sosumi.ai/design/human-interface-guidelines/color")
+@Test func higURLWithTopic() {
+    let url = AppleDocsAPI.higURL(topic: "color")
+    #expect(url == "https://developer.apple.com/tutorials/data/design/human-interface-guidelines/color.json")
+}
+
+@Test func higURLWithoutTopic() {
+    let url = AppleDocsAPI.higURL(topic: nil)
+    #expect(url == "https://developer.apple.com/tutorials/data/design/human-interface-guidelines.json")
+}
+
+@Test func higURLWithCustomBaseURL() {
+    let url = AppleDocsAPI.higURL(baseURL: "https://example.com/data", topic: "buttons")
+    #expect(url == "https://example.com/data/design/human-interface-guidelines/buttons.json")
 }

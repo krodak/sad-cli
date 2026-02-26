@@ -16,18 +16,17 @@ public struct HigCommand: AsyncParsableCommand {
     public init() {}
 
     public mutating func run() async throws {
-        let api = SosumiAPI()
-        let path = Self.higPath(for: topic)
-        let content = try await api.fetchDocMarkdown(path: path)
+        let api = AppleDocsAPI()
+        let doc = try await api.fetchHig(topic: topic)
 
         if json {
-            let wrapper = HigWrapper(topic: topic ?? "overview", content: content)
             let encoder = JSONEncoder()
             encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-            let data = try encoder.encode(wrapper)
+            let data = try encoder.encode(doc)
             print(String(data: data, encoding: .utf8)!)
         } else {
-            print(content)
+            let formatter = MarkdownFormatter()
+            print(formatter.formatDoc(doc))
         }
     }
 
@@ -38,9 +37,4 @@ public struct HigCommand: AsyncParsableCommand {
             return "/design/human-interface-guidelines/"
         }
     }
-}
-
-struct HigWrapper: Codable {
-    var topic: String
-    var content: String
 }

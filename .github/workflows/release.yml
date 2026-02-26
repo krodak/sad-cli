@@ -24,21 +24,21 @@ jobs:
         run: |
           mkdir -p release
           lipo -create \
-            .build/arm64-apple-macosx/release/ad \
-            .build/x86_64-apple-macosx/release/ad \
-            -output release/ad
-          chmod +x release/ad
+            .build/arm64-apple-macosx/release/sad \
+            .build/x86_64-apple-macosx/release/sad \
+            -output release/sad
+          chmod +x release/sad
 
       - name: Create tarball
         run: |
           cd release
-          tar -czf ad-macos-universal.tar.gz ad
-          shasum -a 256 ad-macos-universal.tar.gz > ad-macos-universal.tar.gz.sha256
+          tar -czf sad-macos-universal.tar.gz sad
+          shasum -a 256 sad-macos-universal.tar.gz > sad-macos-universal.tar.gz.sha256
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            release/ad-macos-universal.tar.gz
-            release/ad-macos-universal.tar.gz.sha256
+            release/sad-macos-universal.tar.gz
+            release/sad-macos-universal.tar.gz.sha256
           generate_release_notes: true

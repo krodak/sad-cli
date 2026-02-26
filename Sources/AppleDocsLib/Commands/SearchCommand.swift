@@ -19,7 +19,7 @@ public struct SearchCommand: AsyncParsableCommand {
     public init() {}
 
     public func run() async throws {
-        let api = SosumiAPI()
+        let api = AppleSearchAPI()
         let results = try await api.search(query: query)
         let limited = Array(results.prefix(limit))
 

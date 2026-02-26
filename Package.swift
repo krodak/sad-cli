@@ -2,10 +2,10 @@
 import PackageDescription
 
 let package = Package(
-    name: "apple-docs-cli",
+    name: "sad-cli",
     platforms: [.macOS(.v13)],
     products: [
-        .executable(name: "ad", targets: ["ad"]),
+        .executable(name: "sad", targets: ["sad"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", from: "1.5.0"),
@@ -18,7 +18,7 @@ let package = Package(
             ]
         ),
         .executableTarget(
-            name: "ad",
+            name: "sad",
             dependencies: ["AppleDocsLib"]
         ),
         .testTarget(

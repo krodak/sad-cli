@@ -1,6 +1,6 @@
-# ad - Apple Docs CLI
+# sad - Search Apple Docs
 
-A lightweight, stateless Apple Developer Documentation CLI with 9 commands. Search, browse, and read Apple docs from the terminal. Optimized for AI agents.
+Apple Developer Documentation CLI for AI agents and humans. Markdown output by default, `--json` for structured data. Stateless - no config, no auth, no local database.
 
 ## Requirements
 
@@ -9,193 +9,166 @@ A lightweight, stateless Apple Developer Documentation CLI with 9 commands. Sear
 
 ## Install
 
-### Homebrew (recommended)
+### Homebrew
 
 ```bash
 brew tap krodak/tap
-brew install apple-docs-cli
+brew install sad-cli
 ```
 
 ### Mint
 
 ```bash
-mint install krodak/apple-docs-cli
+mint install krodak/sad-cli
 ```
 
 ### GitHub Releases
 
-Download the universal binary (arm64+x86_64) from [Releases](https://github.com/krodak/apple-docs-cli/releases):
-
 ```bash
-curl -L https://github.com/krodak/apple-docs-cli/releases/latest/download/ad -o /usr/local/bin/ad
-chmod +x /usr/local/bin/ad
+curl -L https://github.com/krodak/sad-cli/releases/latest/download/sad-macos-universal.tar.gz | tar xz
+mv sad /usr/local/bin/
 ```
 
 ### Build from source
 
 ```bash
-git clone https://github.com/krodak/apple-docs-cli.git
-cd apple-docs-cli
+git clone https://github.com/krodak/sad-cli.git
+cd sad-cli
 swift build -c release
-cp .build/release/ad /usr/local/bin/ad
+cp .build/release/sad /usr/local/bin/
 ```
 
 ## Commands
 
-| Command      | Description                                  |
-| ------------ | -------------------------------------------- |
-| `doc`        | Fetch and display documentation for a symbol |
-| `search`     | Search Apple developer documentation         |
-| `frameworks` | List Apple frameworks and technologies       |
-| `wwdc`       | Fetch WWDC session transcripts               |
-| `samples`    | Search for Apple sample code                 |
-| `related`    | Show related topics for a documentation page |
-| `platform`   | Show platform availability for a symbol      |
-| `hig`        | Apple Human Interface Guidelines             |
-| `wasm`       | SwiftWasm book (18 pages)                    |
+| Command | Description |
+| --- | --- |
+| `sad doc <path> [--json]` | Fetch documentation for a symbol or framework |
+| `sad docc <url> [--json]` | Fetch external Swift-DocC documentation by URL |
+| `sad search <query> [--limit N] [--json]` | Search Apple developer documentation |
+| `sad frameworks [--filter TEXT] [--json]` | List Apple frameworks and technologies |
+| `sad wwdc <input> [--json]` | WWDC session transcripts or documentation |
+| `sad samples [query] [--framework TEXT] [--limit N] [--json]` | Search for Apple sample code |
+| `sad related <path> [--json]` | Show related topics for a documentation page |
+| `sad platform <path> [--json]` | Show platform availability for a symbol |
+| `sad hig [topic] [--json]` | Apple Human Interface Guidelines |
+| `sad wasm [slug] [--json]` | SwiftWasm book (18 pages) |
+| `sad evolution [number] [--json]` | Swift Evolution proposals |
 
-All commands output Markdown by default. Pass `--json` for structured JSON output.
+All commands output Markdown by default. Pass `--json` for structured JSON output. All commands support `--help`.
 
-### `ad doc <path>`
-
-Fetch documentation for a symbol or framework.
-
-```bash
-ad doc swift/array
-ad doc uikit/uiviewcontroller
-ad doc swift/array --json
-```
-
-### `ad search <query>`
-
-Search Apple developer documentation.
+### `sad doc <path>`
 
 ```bash
-ad search "combine publisher"
-ad search "swiftui navigation" --limit 5
-ad search "core data" --json
+sad doc swift/array
+sad doc swiftui/view --json
 ```
 
-### `ad frameworks`
-
-List Apple frameworks and technologies.
+### `sad docc <url>`
 
 ```bash
-ad frameworks
-ad frameworks --filter "swift"
-ad frameworks --json
+sad docc https://apple.github.io/swift-argument-parser/documentation/argumentparser
+sad docc apple.github.io/swift-argument-parser/documentation/argumentparser --json
 ```
 
-### `ad wwdc <year/sessionid>`
-
-Fetch WWDC session transcripts or documentation.
+### `sad search <query>`
 
 ```bash
-ad wwdc 2024/10136
-ad wwdc 2023/10187 --json
+sad search "combine publisher"
+sad search "swiftui navigation" --limit 5 --json
 ```
 
-### `ad samples [query]`
-
-Search for Apple sample code.
+### `sad frameworks`
 
 ```bash
-ad samples "augmented reality"
-ad samples --framework SwiftUI
-ad samples "navigation" --limit 5 --json
+sad frameworks
+sad frameworks --filter "swift" --json
 ```
 
-### `ad related <path>`
+### `sad wwdc <input>`
 
-Show related topics for a documentation page.
+Session format: `YYYY/NNNNN`. Non-session input treated as a documentation topic.
 
 ```bash
-ad related swift/array
-ad related uikit/uiviewcontroller --json
+sad wwdc 2024/10136
+sad wwdc 2023/10187 --json
 ```
 
-### `ad platform <path>`
-
-Show platform availability for a symbol.
+### `sad samples [query]`
 
 ```bash
-ad platform swift/array
-ad platform swiftui/view --json
+sad samples "augmented reality"
+sad samples --framework SwiftUI --json
 ```
 
-### `ad hig [topic]`
-
-Browse Apple Human Interface Guidelines.
+### `sad related <path>`
 
 ```bash
-ad hig                         # list all HIG topics
-ad hig color                   # HIG guidance on color
-ad hig typography --json       # typography guidelines as JSON
+sad related swift/array
+sad related swiftui/navigationstack --json
 ```
 
-### `ad wasm [slug]`
-
-Read the SwiftWasm book (18 pages covering WebAssembly development with Swift).
+### `sad platform <path>`
 
 ```bash
-ad wasm                        # list all pages/chapters
-ad wasm getting-started        # getting started guide
-ad wasm browser-apps --json    # browser apps chapter as JSON
+sad platform swiftui/navigationstack
+sad platform swift/regex --json
 ```
 
-## Data Sources
-
-| Source | Used by | URL |
-| ------ | ------- | --- |
-| Apple Developer Documentation | `doc`, `search`, `frameworks`, `samples`, `related`, `platform` | developer.apple.com |
-| Apple Human Interface Guidelines | `hig` | sosumi.ai |
-| WWDC Session Transcripts | `wwdc` | sosumi.ai |
-| SwiftWasm Book | `wasm` | GitHub raw content |
-
-## For AI Agents
-
-Always use the `--json` flag to get structured, parseable output.
+### `sad hig [topic]`
 
 ```bash
-# Look up a specific API
-ad doc swift/array --json | jq '.abstract'
-
-# Find relevant APIs
-ad search "concurrency async" --json | jq '.[].path'
-
-# Check platform support before recommending an API
-ad platform swiftui/view --json
-
-# Get WWDC session content for context
-ad wwdc 2024/10136 --json
-
-# Look up HIG guidance
-ad hig color --json
-
-# Read SwiftWasm docs
-ad wasm getting-started --json
+sad hig
+sad hig color --json
 ```
 
-No configuration, authentication, or local database required. Every invocation is a stateless HTTP request.
+### `sad wasm [slug]`
+
+```bash
+sad wasm
+sad wasm getting-started --json
+```
+
+### `sad evolution [number]`
+
+Accepts `SE-0401`, `0401`, or `401`.
+
+```bash
+sad evolution
+sad evolution SE-0401 --json
+```
+
+## For AI agents
+
+Always use `--json` to get structured, parseable output.
+
+```bash
+sad doc swift/array --json | jq '.metadata.title'
+sad search "async await" --json | jq '.[].title'
+sad platform swiftui/view --json
+sad wwdc 2024/10136 --json
+sad hig color --json
+sad evolution SE-0401 --json
+sad docc https://apple.github.io/swift-argument-parser/documentation/argumentparser --json
+```
+
+No configuration, authentication, or local database required. Every invocation is a stateless HTTP request. Errors go to stderr with non-zero exit code.
 
 ## AI Agent Skill
 
-A skill file is included at `skill/SKILL.md` that teaches AI agents how to use `ad`. Install it for your agent of choice:
-
-### Claude Code
-
-```bash
-mkdir -p ~/.claude/skills/apple-docs
-cp skill/SKILL.md ~/.claude/skills/apple-docs/SKILL.md
-```
-
-Then reference it in your `CLAUDE.md` or project instructions.
+A skill file is included at `skill/SKILL.md` that teaches AI agents how to use `sad`. Install it for your agent of choice:
 
 ### OpenCode
 
 ```bash
 mkdir -p ~/.config/opencode/skills/apple-docs
 cp skill/SKILL.md ~/.config/opencode/skills/apple-docs/SKILL.md
+```
+
+### Claude Code
+
+```bash
+mkdir -p ~/.claude/skills/apple-docs
+cp skill/SKILL.md ~/.claude/skills/apple-docs/SKILL.md
 ```
 
 ### Codex
@@ -206,35 +179,20 @@ Copy the contents of `skill/SKILL.md` into your Codex system prompt or project i
 
 The skill file is a standalone markdown document. Feed it to any agent that supports custom instructions or tool documentation.
 
-## Why `ad`
-
-| Feature             | ad             | cupertino         | apple-docs-mcp | sosumi.ai    |
-| ------------------- | -------------- | ----------------- | --------------- | ------------ |
-| Install             | Single binary  | Ruby gem + deps   | MCP server      | Web only     |
-| Auth/config         | None           | Apple ID login    | None            | None         |
-| Local database      | No             | Yes (SQLite)      | No              | No           |
-| AI agent friendly   | Yes (--json)   | No                | MCP only        | API only     |
-| WWDC transcripts    | Yes            | No                | Yes             | Yes          |
-| Sample code search  | Yes            | No                | Limited         | Limited      |
-| HIG guidelines      | Yes            | No                | No              | Yes          |
-| SwiftWasm docs      | Yes            | No                | No              | No           |
-| Offline             | No             | Partial           | No              | No           |
-| Dependencies        | 1 (arg parser) | 20+               | Node + MCP      | None (SaaS)  |
-
 ## Development
 
 ```bash
 swift build                  # debug build
 swift build -c release       # release build
-swift test                   # run tests (43 tests)
-swift run ad --help          # run from source
+swift test                   # run tests (76 tests)
+swift run sad --help         # run from source
 ```
 
 ### Project structure
 
 ```
 Sources/
-  ad/                        # CLI entry point
+  sad/                       # CLI entry point
   AppleDocsLib/              # Library: commands, models, networking
 Tests/
   AppleDocsLibTests/         # Unit tests with fixture-based mocking

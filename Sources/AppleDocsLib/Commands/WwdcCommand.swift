@@ -16,9 +16,9 @@ public struct WwdcCommand: AsyncParsableCommand {
     public init() {}
 
     public func run() async throws {
-        let api = SosumiAPI()
+        let api = AppleDocsAPI()
 
-        if let (year, sessionId) = parseSessionRef(input) {
+        if let (year, sessionId) = Self.parseSessionRef(input) {
             let transcript = try await api.fetchWwdcTranscript(year: year, sessionId: sessionId)
             if json {
                 let wrapper = TranscriptWrapper(year: year, sessionId: sessionId, transcript: transcript)
@@ -30,20 +30,20 @@ public struct WwdcCommand: AsyncParsableCommand {
                 print(transcript)
             }
         } else {
-            let markdown = try await api.fetchDocMarkdown(path: "/documentation/\(input)")
+            let doc = try await api.fetchDoc(path: input)
             if json {
-                let wrapper = DocMarkdownWrapper(path: input, content: markdown)
                 let encoder = JSONEncoder()
                 encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-                let data = try encoder.encode(wrapper)
+                let data = try encoder.encode(doc)
                 print(String(data: data, encoding: .utf8)!)
             } else {
-                print(markdown)
+                let formatter = MarkdownFormatter()
+                print(formatter.formatDoc(doc))
             }
         }
     }
 
-    private func parseSessionRef(_ input: String) -> (Int, String)? {
+    static func parseSessionRef(_ input: String) -> (Int, String)? {
         let parts = input.split(separator: "/")
         guard parts.count == 2,
               let year = Int(parts[0]),
@@ -56,9 +56,4 @@ struct TranscriptWrapper: Codable {
     var year: Int
     var sessionId: String
     var transcript: String
-}
-
-struct DocMarkdownWrapper: Codable {
-    var path: String
-    var content: String
 }

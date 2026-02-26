@@ -28,7 +28,7 @@ public struct SamplesCommand: AsyncParsableCommand {
         parts.append("sample code")
         let searchQuery = parts.joined(separator: " ")
 
-        let api = SosumiAPI()
+        let api = AppleSearchAPI()
         let results = try await api.search(query: searchQuery)
         let limited = Array(results.prefix(limit))
 

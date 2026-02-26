@@ -4,7 +4,7 @@ import Testing
 
 @Test func parsesSearchResultsFromFixture() throws {
     let html = try fixtureString(named: "search-results", extension: "html")
-    let api = SosumiAPI()
+    let api = AppleSearchAPI()
     let results = api.parseSearchHTML(html)
 
     #expect(results.count == 6)
@@ -12,7 +12,7 @@ import Testing
 
 @Test func parsesSearchResultTitles() throws {
     let html = try fixtureString(named: "search-results", extension: "html")
-    let api = SosumiAPI()
+    let api = AppleSearchAPI()
     let results = api.parseSearchHTML(html)
 
     #expect(results[0].title == "NavigationStack")
@@ -25,7 +25,7 @@ import Testing
 
 @Test func parsesSearchResultURLs() throws {
     let html = try fixtureString(named: "search-results", extension: "html")
-    let api = SosumiAPI()
+    let api = AppleSearchAPI()
     let results = api.parseSearchHTML(html)
 
     #expect(results[0].url == "https://developer.apple.com/documentation/swiftui/navigationstack/")
@@ -38,7 +38,7 @@ import Testing
 
 @Test func parsesSearchResultDescriptions() throws {
     let html = try fixtureString(named: "search-results", extension: "html")
-    let api = SosumiAPI()
+    let api = AppleSearchAPI()
     let results = api.parseSearchHTML(html)
 
     #expect(results[0].description == nil)
@@ -48,7 +48,7 @@ import Testing
 
 @Test func parsesSearchResultTypes() throws {
     let html = try fixtureString(named: "search-results", extension: "html")
-    let api = SosumiAPI()
+    let api = AppleSearchAPI()
     let results = api.parseSearchHTML(html)
 
     for result in results {
@@ -57,27 +57,9 @@ import Testing
 }
 
 @Test func parseSearchHTMLReturnsEmptyForGarbage() {
-    let api = SosumiAPI()
+    let api = AppleSearchAPI()
     let results = api.parseSearchHTML("<html><body>No results</body></html>")
     #expect(results.isEmpty)
-}
-
-@Test func wwdcTranscriptURLConstruction() {
-    let url = SosumiAPI.wwdcTranscriptURL(year: 2024, sessionId: "10143")
-    #expect(url == "https://sosumi.ai/videos/play/wwdc2024/10143")
-}
-
-@Test func wwdcTranscriptURLCustomBase() {
-    let url = SosumiAPI.wwdcTranscriptURL(baseURL: "https://example.com", year: 2023, sessionId: "101")
-    #expect(url == "https://example.com/videos/play/wwdc2023/101")
-}
-
-@Test func docMarkdownURLNormalizesLeadingSlash() {
-    let withSlash = SosumiAPI.docMarkdownURL(path: "/documentation/swiftui")
-    let withoutSlash = SosumiAPI.docMarkdownURL(path: "documentation/swiftui")
-
-    #expect(withSlash == "https://sosumi.ai/documentation/swiftui")
-    #expect(withoutSlash == "https://sosumi.ai/documentation/swiftui")
 }
 
 private func fixtureString(named name: String, extension ext: String) throws -> String {
