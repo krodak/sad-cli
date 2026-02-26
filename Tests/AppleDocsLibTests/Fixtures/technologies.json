@@ -1,0 +1,138 @@
+{
+  "topicSections": [
+    {
+      "title": "App Frameworks",
+      "identifiers": [
+        "doc://com.apple.documentation/documentation/Accessibility",
+        "doc://com.apple.documentation/documentation/AccessoryNotifications",
+        "doc://com.apple.documentation/documentation/AccountDataTransfer"
+      ]
+    },
+    {
+      "title": "App Services",
+      "identifiers": [
+        "doc://com.apple.documentation/documentation/Accounts",
+        "doc://com.apple.documentation/documentation/AdAttributionKit",
+        "doc://com.apple.documentation/documentation/AddressBook"
+      ]
+    },
+    {
+      "title": "Developer Tools",
+      "identifiers": [
+        "doc://com.apple.documentation/documentation/analytics-reports",
+        "doc://com.apple.documentation/documentation/Automator",
+        "doc://com.apple.documentation/documentation/DeveloperToolsSupport"
+      ]
+    }
+  ],
+  "references": {
+    "doc://com.apple.documentation/documentation/analytics-reports": {
+      "title": "Analytics Reports",
+      "url": "/documentation/analytics-reports",
+      "abstract": [
+        {
+          "text": "A list of app development reports, their field descriptions, and glossaries.",
+          "type": "text"
+        }
+      ],
+      "kind": "article",
+      "role": "collection"
+    },
+    "doc://com.apple.documentation/documentation/DeveloperToolsSupport": {
+      "title": "DeveloperToolsSupport",
+      "url": "/documentation/DeveloperToolsSupport",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "Expose custom views and modifiers in the Xcode library."
+        }
+      ],
+      "kind": "symbol",
+      "role": "collection"
+    },
+    "doc://com.apple.documentation/documentation/AccountDataTransfer": {
+      "title": "Account Data Transfer",
+      "url": "/documentation/AccountDataTransfer",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "Download App Store information, app install, and push notification activity on behalf of people who use your app."
+        }
+      ],
+      "kind": "symbol",
+      "role": "collection"
+    },
+    "doc://com.apple.documentation/documentation/Accounts": {
+      "title": "Accounts",
+      "url": "/documentation/Accounts",
+      "abstract": [
+        {
+          "text": "Help users access and manage their external accounts from within your app, without requiring them to enter login credentials.",
+          "type": "text"
+        }
+      ],
+      "kind": "symbol",
+      "role": "collection"
+    },
+    "doc://com.apple.documentation/documentation/AccessoryNotifications": {
+      "title": "Accessory Notifications",
+      "url": "/documentation/AccessoryNotifications",
+      "abstract": [
+        {
+          "text": "Receive forwarded iOS system notifications on an accessory that you develop.",
+          "type": "text"
+        }
+      ],
+      "kind": "symbol",
+      "role": "collection"
+    },
+    "doc://com.apple.documentation/documentation/Accessibility": {
+      "title": "Accessibility",
+      "url": "/documentation/Accessibility",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "Make your apps accessible to everyone who uses Apple devices."
+        }
+      ],
+      "kind": "symbol",
+      "role": "collection"
+    },
+    "doc://com.apple.documentation/documentation/Automator": {
+      "title": "Automator",
+      "url": "/documentation/Automator",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "Develop actions that the Automator app can load and run. View, edit, and run Automator workflows in your app."
+        }
+      ],
+      "kind": "symbol",
+      "role": "collection"
+    },
+    "doc://com.apple.documentation/documentation/AdAttributionKit": {
+      "title": "AdAttributionKit",
+      "url": "/documentation/AdAttributionKit",
+      "abstract": [
+        {
+          "type": "text",
+          "text": "Present, process, and register postbacks for in-app ads in the App Store and alternative app marketplaces."
+        }
+      ],
+      "kind": "symbol",
+      "role": "collection"
+    },
+    "doc://com.apple.documentation/documentation/AddressBook": {
+      "title": "Address Book",
+      "url": "/documentation/AddressBook",
+      "abstract": [
+        {
+          "text": "Access the centralized database for storing users\u2019 contacts.",
+          "type": "text"
+        }
+      ],
+      "kind": "symbol",
+      "role": "collection"
+    }
+  }
+}
