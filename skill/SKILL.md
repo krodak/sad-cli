@@ -1,13 +1,13 @@
 ---
 name: apple-docs
-description: Use when looking up Apple Developer Documentation, checking API availability, finding related APIs, searching sample code, or reading WWDC session transcripts. Also use when the user asks about any Apple framework, Swift standard library type, SwiftUI view, UIKit class, or platform compatibility.
+description: Use when looking up Apple Developer Documentation, checking API availability, finding related APIs, searching sample code, reading WWDC session transcripts, consulting Apple Human Interface Guidelines, or reading SwiftWasm book content. Also use when the user asks about any Apple framework, Swift standard library type, SwiftUI view, UIKit class, platform compatibility, HIG design guidance, or WebAssembly development with Swift.
 ---
 
 # Apple Docs CLI (`ad`)
 
 Reference for AI agents using the `ad` command-line tool to query Apple Developer Documentation.
 
-Keywords: Apple, Swift, SwiftUI, UIKit, AppKit, Foundation, Combine, iOS, macOS, watchOS, tvOS, visionOS, WWDC, documentation, API, framework, platform availability, sample code
+Keywords: Apple, Swift, SwiftUI, UIKit, AppKit, Foundation, Combine, iOS, macOS, watchOS, tvOS, visionOS, WWDC, documentation, API, framework, platform availability, sample code, Human Interface Guidelines, HIG, WebAssembly, SwiftWasm, Wasm
 
 ## When to Use
 
@@ -17,6 +17,8 @@ Keywords: Apple, Swift, SwiftUI, UIKit, AppKit, Foundation, Combine, iOS, macOS,
 - Searching for sample code
 - Reading WWDC session transcripts
 - Browsing available Apple frameworks and technologies
+- Consulting Apple Human Interface Guidelines (color, typography, layout, components)
+- Looking up SwiftWasm / WebAssembly development with Swift
 
 ## Commands
 
@@ -117,6 +119,39 @@ ad platform <path> [--json]
 | `ad platform uikit/uiviewcontroller` | UIViewController platform availability |
 | `ad platform swift/regex --json` | Regex availability as JSON |
 
+### hig - Apple Human Interface Guidelines
+
+```bash
+ad hig [topic] [--json]
+```
+
+- With no topic: lists all available HIG topics
+- With a topic: fetches HIG guidance for that topic
+
+| Example | What it returns |
+|---------|-----------------|
+| `ad hig` | List of all HIG topics |
+| `ad hig color` | HIG guidance on color usage |
+| `ad hig typography` | HIG typography recommendations |
+| `ad hig layout --json` | Layout guidelines as JSON |
+| `ad hig accessibility` | Accessibility design guidance |
+
+### wasm - SwiftWasm book
+
+```bash
+ad wasm [slug] [--json]
+```
+
+- With no slug: lists all 18 pages/chapters
+- With a slug: fetches the content of that page
+
+| Example | What it returns |
+|---------|-----------------|
+| `ad wasm` | Table of contents (18 pages) |
+| `ad wasm getting-started` | Getting started with SwiftWasm |
+| `ad wasm browser-apps` | Building browser apps with Swift |
+| `ad wasm wasi --json` | WASI chapter as JSON |
+
 ## Path Format
 
 Paths mirror the Apple documentation URL structure, minus the `/documentation/` prefix.
@@ -176,6 +211,22 @@ ad search "swift concurrency wwdc"
 ad wwdc 2024/10136
 ```
 
+### Get HIG guidance for a design decision
+
+```bash
+ad hig color
+ad hig typography
+ad hig accessibility
+```
+
+### Research SwiftWasm for a WebAssembly project
+
+```bash
+ad wasm                        # see what's available
+ad wasm getting-started        # start here
+ad wasm browser-apps           # if building for the browser
+```
+
 ## Output
 
 - **Default:** Markdown - readable in terminal, suitable for direct use in responses
@@ -189,3 +240,5 @@ ad wwdc 2024/10136
 - Paths are case-insensitive
 - If a path returns an error, try `ad search` to find the correct path
 - WWDC session IDs are 5-digit numbers; find them via `ad search "wwdc YYYY topic"`
+- HIG topics are lowercase slugs (e.g. `color`, `typography`, `layout`)
+- SwiftWasm slugs match book chapter URLs; run `ad wasm` with no args to list them

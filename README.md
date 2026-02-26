@@ -1,6 +1,6 @@
 # ad - Apple Docs CLI
 
-A lightweight, stateless Apple Developer Documentation CLI. Search, browse, and read Apple docs from the terminal. Optimized for AI agents.
+A lightweight, stateless Apple Developer Documentation CLI with 9 commands. Search, browse, and read Apple docs from the terminal. Optimized for AI agents.
 
 ## Requirements
 
@@ -8,6 +8,28 @@ A lightweight, stateless Apple Developer Documentation CLI. Search, browse, and 
 - Swift 6.0 (for building from source)
 
 ## Install
+
+### Homebrew (recommended)
+
+```bash
+brew tap krodak/tap
+brew install apple-docs-cli
+```
+
+### Mint
+
+```bash
+mint install krodak/apple-docs-cli
+```
+
+### GitHub Releases
+
+Download the universal binary (arm64+x86_64) from [Releases](https://github.com/krodak/apple-docs-cli/releases):
+
+```bash
+curl -L https://github.com/krodak/apple-docs-cli/releases/latest/download/ad -o /usr/local/bin/ad
+chmod +x /usr/local/bin/ad
+```
 
 ### Build from source
 
@@ -18,21 +40,19 @@ swift build -c release
 cp .build/release/ad /usr/local/bin/ad
 ```
 
-### Homebrew
-
-Coming soon.
-
 ## Commands
 
-| Command    | Description                                  |
-| ---------- | -------------------------------------------- |
-| `doc`      | Fetch and display documentation for a symbol |
-| `search`   | Search Apple developer documentation         |
-| `frameworks` | List Apple frameworks and technologies     |
-| `wwdc`     | Fetch WWDC session transcripts               |
-| `samples`  | Search for Apple sample code                 |
-| `related`  | Show related topics for a documentation page |
-| `platform` | Show platform availability for a symbol      |
+| Command      | Description                                  |
+| ------------ | -------------------------------------------- |
+| `doc`        | Fetch and display documentation for a symbol |
+| `search`     | Search Apple developer documentation         |
+| `frameworks` | List Apple frameworks and technologies       |
+| `wwdc`       | Fetch WWDC session transcripts               |
+| `samples`    | Search for Apple sample code                 |
+| `related`    | Show related topics for a documentation page |
+| `platform`   | Show platform availability for a symbol      |
+| `hig`        | Apple Human Interface Guidelines             |
+| `wasm`       | SwiftWasm book (18 pages)                    |
 
 All commands output Markdown by default. Pass `--json` for structured JSON output.
 
@@ -103,6 +123,35 @@ ad platform swift/array
 ad platform swiftui/view --json
 ```
 
+### `ad hig [topic]`
+
+Browse Apple Human Interface Guidelines.
+
+```bash
+ad hig                         # list all HIG topics
+ad hig color                   # HIG guidance on color
+ad hig typography --json       # typography guidelines as JSON
+```
+
+### `ad wasm [slug]`
+
+Read the SwiftWasm book (18 pages covering WebAssembly development with Swift).
+
+```bash
+ad wasm                        # list all pages/chapters
+ad wasm getting-started        # getting started guide
+ad wasm browser-apps --json    # browser apps chapter as JSON
+```
+
+## Data Sources
+
+| Source | Used by | URL |
+| ------ | ------- | --- |
+| Apple Developer Documentation | `doc`, `search`, `frameworks`, `samples`, `related`, `platform` | developer.apple.com |
+| Apple Human Interface Guidelines | `hig` | sosumi.ai |
+| WWDC Session Transcripts | `wwdc` | sosumi.ai |
+| SwiftWasm Book | `wasm` | GitHub raw content |
+
 ## For AI Agents
 
 Always use the `--json` flag to get structured, parseable output.
@@ -119,9 +168,15 @@ ad platform swiftui/view --json
 
 # Get WWDC session content for context
 ad wwdc 2024/10136 --json
+
+# Look up HIG guidance
+ad hig color --json
+
+# Read SwiftWasm docs
+ad wasm getting-started --json
 ```
 
-No configuration, authentication, or local database required. Every invocation is a stateless HTTP request to Apple's public JSON API.
+No configuration, authentication, or local database required. Every invocation is a stateless HTTP request.
 
 ## AI Agent Skill
 
@@ -161,6 +216,8 @@ The skill file is a standalone markdown document. Feed it to any agent that supp
 | AI agent friendly   | Yes (--json)   | No                | MCP only        | API only     |
 | WWDC transcripts    | Yes            | No                | Yes             | Yes          |
 | Sample code search  | Yes            | No                | Limited         | Limited      |
+| HIG guidelines      | Yes            | No                | No              | Yes          |
+| SwiftWasm docs      | Yes            | No                | No              | No           |
 | Offline             | No             | Partial           | No              | No           |
 | Dependencies        | 1 (arg parser) | 20+               | Node + MCP      | None (SaaS)  |
 
@@ -169,7 +226,7 @@ The skill file is a standalone markdown document. Feed it to any agent that supp
 ```bash
 swift build                  # debug build
 swift build -c release       # release build
-swift test                   # run tests
+swift test                   # run tests (43 tests)
 swift run ad --help          # run from source
 ```
 

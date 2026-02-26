@@ -43,3 +43,15 @@ Homebrew tap (`krodak/tap`) and GitHub releases with pre-built universal binary.
 
 ## D14: Dependencies - minimal
 Only `swift-argument-parser` (Apple's own CLI framework). No other external dependencies. URLSession for HTTP, Foundation for JSON (Codable). Keep it lean.
+
+## D15: SwiftWasm book as data source
+Added the SwiftWasm book (18 pages, fetched from GitHub raw content) as a data source for WebAssembly development docs. Fills a gap - no other CLI tool provides offline-friendly SwiftWasm reference.
+
+## D16: HIG via sosumi.ai proxy
+Added Apple Human Interface Guidelines via the sosumi.ai proxy, same pattern as WWDC transcripts. Gives agents access to HIG design guidance without scraping Apple's site.
+
+## D17: Distribution - Homebrew tap, Mint, GitHub Releases, source
+Four install paths: Homebrew tap (`krodak/tap`) as primary, Mint (works out of the box since Package.swift has executable product), universal binary from GitHub Releases (arm64+x86_64 built by GitHub Actions), and build from source. Covers the full spectrum from casual users to contributors.
+
+## D18: swift-tools-version stays at 6.0
+Keeping swift-tools-version at 6.0 for maximum compatibility. Swift 6.0 is the minimum that supports strict concurrency checking, which we rely on. No need to bump to 6.1+ yet.
