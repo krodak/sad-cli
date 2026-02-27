@@ -179,6 +179,27 @@ Copy the contents of `skill/SKILL.md` into your Codex system prompt or project i
 
 The skill file is a standalone markdown document. Feed it to any agent that supports custom instructions or tool documentation.
 
+## Why this exists
+
+There are already a few tools for querying Apple docs programmatically. Here's how they compare and why `sad` takes a different approach.
+
+| | sad | [apple-docs-mcp](https://github.com/nicklama/apple-docs-mcp) | [cupertino](https://github.com/nicklama/cupertino) | [sosumi.ai](https://sosumi.ai) |
+|---|---|---|---|---|
+| Type | CLI | MCP server | CLI + MCP | HTTP proxy + MCP |
+| Language | Swift | TypeScript | Swift | TypeScript |
+| Local storage | None | None | ~2-3 GB SQLite | None |
+| Third-party service | None | None | None | sosumi.ai |
+| Setup | `brew install` | npm + MCP config | clone + build + import | API endpoint config |
+| Scope | Docs, HIG, WWDC, samples, Swift Evolution, SwiftWasm, external DocC | Docs, search | Docs, search, forums | Docs, HIG, WWDC |
+
+The main difference is philosophical. Most existing tools are MCP servers - they plug into a specific AI agent protocol and require configuring that integration. `sad` is just a CLI. Any agent that can run shell commands can use it, no protocol adapter needed. Same goes for humans debugging something in a terminal.
+
+`cupertino` is the closest in spirit (also Swift, also a CLI), but it imports Apple's documentation into a local SQLite database. That's a 2-3 GB download before you can run your first query. `sad` is stateless - it hits Apple's JSON APIs directly, so there's nothing to sync or store.
+
+`sosumi.ai` is a hosted proxy that wraps Apple's documentation behind a third-party endpoint. Works fine until the service goes down or changes its API. `sad` talks to Apple directly and has zero runtime dependencies beyond the binary itself.
+
+The other tools are probably more useful for most people. If you already have an MCP setup, `apple-docs-mcp` plugs right in. If you want offline access or full-text search, `cupertino`'s local database is hard to beat. `sad` fills a narrower niche - I wanted something with zero setup and zero state that works anywhere a shell does, and nothing else quite fit.
+
 ## Development
 
 ```bash
