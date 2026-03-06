@@ -1,6 +1,6 @@
 ---
 name: apple-docs
-description: 'Use when looking up Apple Developer Documentation, checking API availability, finding related APIs, searching sample code, reading WWDC session transcripts, consulting Apple Human Interface Guidelines, reading SwiftWasm book content, reading Swift Evolution proposals, or fetching external Swift-DocC documentation.'
+description: 'Use when looking up Apple Developer Documentation, checking Apple platform availability for a symbol, finding related Apple APIs, searching Apple sample code, reading WWDC session transcripts, consulting Apple Human Interface Guidelines, reading SwiftWasm book content, reading Swift Evolution proposals, or fetching external Swift-DocC documentation.'
 ---
 
 # Search Apple Docs (`sad`)
