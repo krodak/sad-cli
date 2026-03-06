@@ -35,22 +35,24 @@ public struct FrameworksCommand: AsyncParsableCommand {
     }
 
     private func filterTechnologies(_ response: TechnologiesResponse, by filter: String) -> TechnologiesResponse {
-        guard let refs = response.references else { return response }
-
-        let matchingIDs = Set(refs.filter { _, ref in
-            ref.title?.lowercased().contains(filter) == true
-        }.keys)
-
-        let filteredSections = response.topicSections?.compactMap { section -> TopicSection? in
-            let filtered = section.identifiers?.filter { matchingIDs.contains($0) }
-            guard let filtered, !filtered.isEmpty else { return nil }
+        let filteredSections = response.sections?.compactMap { section -> TechnologiesSection? in
+            let filteredGroups = section.groups?.compactMap { group -> TechnologyGroup? in
+                let filtered = group.technologies?.filter { tech in
+                    tech.title?.lowercased().contains(filter) == true
+                }
+                guard let filtered, !filtered.isEmpty else { return nil }
+                var g = group
+                g.technologies = filtered
+                return g
+            }
+            guard let filteredGroups, !filteredGroups.isEmpty else { return nil }
             var s = section
-            s.identifiers = filtered
+            s.groups = filteredGroups
             return s
         }
 
         var result = response
-        result.topicSections = filteredSections
+        result.sections = filteredSections
         return result
     }
 }

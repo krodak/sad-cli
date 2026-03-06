@@ -183,22 +183,33 @@ The skill file is a standalone markdown document. Feed it to any agent that supp
 
 There are already a few tools for querying Apple docs programmatically. Here's how they compare and why `sad` takes a different approach.
 
-| | sad | [apple-docs-mcp](https://github.com/nicklama/apple-docs-mcp) | [cupertino](https://github.com/nicklama/cupertino) | [sosumi.ai](https://sosumi.ai) |
+| | sad | [sosumi.ai](https://sosumi.ai) | [apple-docs-mcp](https://github.com/kimsungwhee/apple-docs-mcp) | [cupertino](https://github.com/mihaelamj/cupertino) |
 |---|---|---|---|---|
-| Type | CLI | MCP server | CLI + MCP | HTTP proxy + MCP |
-| Language | Swift | TypeScript | Swift | TypeScript |
-| Local storage | None | None | ~2-3 GB SQLite | None |
-| Third-party service | None | None | None | sosumi.ai |
-| Setup | `brew install` | npm + MCP config | clone + build + import | API endpoint config |
-| Scope | Docs, HIG, WWDC, samples, Swift Evolution, SwiftWasm, external DocC | Docs, search | Docs, search, forums | Docs, HIG, WWDC |
+| Type | CLI | HTTP proxy + MCP + CLI | MCP server | CLI + MCP |
+| Language | Swift | TypeScript | TypeScript | Swift |
+| Local storage | None | None | None | ~2-3 GB SQLite |
+| Third-party service | None | sosumi.ai | None | None |
+| Setup | `brew install` | npm/MCP config | npm + MCP config | clone + build + import |
+| Docs | Yes | Yes | Yes | Yes |
+| Search | Yes | Yes | Yes | Yes |
+| HIG | Yes | Yes | No | No |
+| WWDC transcripts | Yes | Yes | No | No |
+| External DocC | Yes | Yes | No | No |
+| Frameworks listing | Yes | No | No | No |
+| Sample code | Yes | No | No | Yes |
+| Platform availability | Yes | No | No | No |
+| Related topics | Yes | No | No | No |
+| Swift Evolution | Yes | No | No | No |
+| SwiftWasm book | Yes | No | No | No |
+| Offline access | No | No | No | Yes |
 
-The main difference is philosophical. Most existing tools are MCP servers - they plug into a specific AI agent protocol and require configuring that integration. `sad` is just a CLI. Any agent that can run shell commands can use it, no protocol adapter needed. Same goes for humans debugging something in a terminal.
+`sosumi.ai` is the most feature-complete alternative and recently added a CLI (`npx @nshipster/sosumi`). It covers docs, HIG, WWDC, external DocC, and search. The difference is architectural: sosumi routes everything through their hosted proxy at sosumi.ai. Their CLI also calls the proxy, not Apple directly. Works well, but you depend on their service staying up. `sad` talks to Apple's JSON APIs with no intermediary.
 
-`cupertino` is the closest in spirit (also Swift, also a CLI), but it imports Apple's documentation into a local SQLite database. That's a 2-3 GB download before you can run your first query. `sad` is stateless - it hits Apple's JSON APIs directly, so there's nothing to sync or store.
+`cupertino` takes the opposite approach - it crawls Apple's docs into a local SQLite database (~2-3 GB). Great if you want offline access or full-text search across everything. Not great if you want to just install and run.
 
-`sosumi.ai` is a hosted proxy that wraps Apple's documentation behind a third-party endpoint. Works fine until the service goes down or changes its API. `sad` talks to Apple directly and has zero runtime dependencies beyond the binary itself.
+`apple-docs-mcp` is an MCP server for docs and search. Straightforward if you already have an MCP client configured.
 
-The other tools are probably more useful for most people. If you already have an MCP setup, `apple-docs-mcp` plugs right in. If you want offline access or full-text search, `cupertino`'s local database is hard to beat. `sad` fills a narrower niche - I wanted something with zero setup and zero state that works anywhere a shell does, and nothing else quite fit.
+All of these are solid tools. `sad` fills a narrower niche - I wanted something with zero setup, zero state, and no service dependency that works anywhere a shell does. The 11 commands cover more surface area than the alternatives, but it's a CLI, not an MCP server, so it works with any agent that can run shell commands rather than requiring protocol-specific integration.
 
 ## Development
 

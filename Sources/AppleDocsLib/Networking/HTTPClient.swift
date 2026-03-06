@@ -10,7 +10,7 @@ public enum HTTPClientError: Error, Sendable {
 }
 
 public struct HTTPClient: Sendable {
-    private static let userAgent = "sad-cli/0.1.0"
+    private static let userAgent = "sad-cli/0.1.1"
 
     public init() {}
 

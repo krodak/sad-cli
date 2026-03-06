@@ -2,13 +2,17 @@ import Foundation
 import Testing
 @testable import AppleDocsLib
 
-@Test func parseTechnologiesTopicSections() throws {
+@Test func parseTechnologiesSections() throws {
     let data = try technologiesFixtureData()
     let response = try JSONDecoder().decode(TechnologiesResponse.self, from: data)
-    let sections = try #require(response.topicSections)
+    let sections = try #require(response.sections)
     #expect(!sections.isEmpty)
-    #expect(sections[0].title != nil)
-    #expect(sections[0].identifiers != nil)
+    let groups = try #require(sections[0].groups)
+    #expect(!groups.isEmpty)
+    #expect(groups[0].name == "App Frameworks")
+    let technologies = try #require(groups[0].technologies)
+    #expect(!technologies.isEmpty)
+    #expect(technologies[0].title == "Accessibility")
 }
 
 @Test func parseTechnologiesReferences() throws {
@@ -21,10 +25,11 @@ import Testing
 @Test func technologiesReferencesResolvable() throws {
     let data = try technologiesFixtureData()
     let response = try JSONDecoder().decode(TechnologiesResponse.self, from: data)
-    let sections = try #require(response.topicSections)
+    let sections = try #require(response.sections)
     let refs = try #require(response.references)
-    let firstIdentifier = try #require(sections[0].identifiers?.first)
-    let resolved = refs[firstIdentifier]
+    let firstTech = try #require(sections[0].groups?.first?.technologies?.first)
+    let identifier = try #require(firstTech.destination?.identifier)
+    let resolved = refs[identifier]
     #expect(resolved != nil)
     #expect(resolved?.title != nil)
 }

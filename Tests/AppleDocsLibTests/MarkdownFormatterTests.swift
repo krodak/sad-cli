@@ -118,8 +118,27 @@ private let formatter = MarkdownFormatter()
 
 @Test func formatTechnologiesListing() {
     let response = TechnologiesResponse(
-        topicSections: [
-            TopicSection(title: "App Frameworks", identifiers: ["ref-swiftui"], anchor: nil, generated: nil),
+        sections: [
+            TechnologiesSection(
+                kind: "technologies",
+                groups: [
+                    TechnologyGroup(
+                        name: "App Frameworks",
+                        technologies: [
+                            TechnologyEntry(
+                                title: "SwiftUI",
+                                destination: TechnologyDestination(
+                                    identifier: "ref-swiftui",
+                                    type: "reference",
+                                    isActive: true
+                                ),
+                                tags: nil,
+                                languages: nil
+                            ),
+                        ]
+                    ),
+                ]
+            ),
         ],
         references: [
             "ref-swiftui": TechnologyReference(

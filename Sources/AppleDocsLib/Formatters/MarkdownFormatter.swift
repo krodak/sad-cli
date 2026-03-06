@@ -107,24 +107,28 @@ public struct MarkdownFormatter: Sendable {
     public func formatTechnologies(_ response: TechnologiesResponse) -> String {
         var lines: [String] = ["# Frameworks & Technologies"]
 
-        guard let sections = response.topicSections, !sections.isEmpty else {
+        guard let sections = response.sections else {
             return lines.joined(separator: "\n")
         }
 
         for section in sections {
-            if let title = section.title {
-                lines.append("")
-                lines.append("## \(title)")
-            }
-            if let ids = section.identifiers, let refs = response.references {
-                for id in ids {
-                    if let ref = refs[id], let name = ref.title {
-                        let desc = ref.abstract.map { formatInlineContent($0) } ?? ""
-                        if desc.isEmpty {
-                            lines.append("- **\(name)**")
-                        } else {
-                            lines.append("- **\(name)** - \(desc)")
-                        }
+            guard let groups = section.groups else { continue }
+            for group in groups {
+                if let name = group.name {
+                    lines.append("")
+                    lines.append("## \(name)")
+                }
+                guard let technologies = group.technologies else { continue }
+                for tech in technologies {
+                    guard let title = tech.title else { continue }
+                    let identifier = tech.destination?.identifier
+                    let desc = identifier
+                        .flatMap { response.references?[$0]?.abstract }
+                        .map { formatInlineContent($0) } ?? ""
+                    if desc.isEmpty {
+                        lines.append("- **\(title)**")
+                    } else {
+                        lines.append("- **\(title)** - \(desc)")
                     }
                 }
             }

@@ -7,7 +7,7 @@ struct Sad: AsyncParsableCommand {
         commandName: "sad",
         abstract: "Search Apple Docs - Apple Developer Documentation CLI",
         discussion: "Search, browse, and read Apple developer docs from the terminal. Optimized for AI agents.",
-        version: "0.1.0",
+        version: "0.1.1",
         subcommands: [
             DocCommand.self,
             DoccCommand.self,

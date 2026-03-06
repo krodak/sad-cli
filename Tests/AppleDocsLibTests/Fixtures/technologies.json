@@ -1,27 +1,113 @@
 {
-  "topicSections": [
+  "sections": [
     {
-      "title": "App Frameworks",
-      "identifiers": [
-        "doc://com.apple.documentation/documentation/Accessibility",
-        "doc://com.apple.documentation/documentation/AccessoryNotifications",
-        "doc://com.apple.documentation/documentation/AccountDataTransfer"
-      ]
-    },
-    {
-      "title": "App Services",
-      "identifiers": [
-        "doc://com.apple.documentation/documentation/Accounts",
-        "doc://com.apple.documentation/documentation/AdAttributionKit",
-        "doc://com.apple.documentation/documentation/AddressBook"
-      ]
-    },
-    {
-      "title": "Developer Tools",
-      "identifiers": [
-        "doc://com.apple.documentation/documentation/analytics-reports",
-        "doc://com.apple.documentation/documentation/Automator",
-        "doc://com.apple.documentation/documentation/DeveloperToolsSupport"
+      "kind": "technologies",
+      "groups": [
+        {
+          "name": "App Frameworks",
+          "technologies": [
+            {
+              "title": "Accessibility",
+              "destination": {
+                "type": "reference",
+                "isActive": true,
+                "identifier": "doc://com.apple.documentation/documentation/Accessibility"
+              },
+              "tags": ["Accessibility", "App Frameworks"],
+              "languages": ["occ", "swift"]
+            },
+            {
+              "title": "Accessory Notifications",
+              "destination": {
+                "type": "reference",
+                "isActive": true,
+                "identifier": "doc://com.apple.documentation/documentation/AccessoryNotifications"
+              },
+              "tags": ["App Frameworks"],
+              "languages": ["occ", "swift"]
+            },
+            {
+              "title": "Account Data Transfer",
+              "destination": {
+                "type": "reference",
+                "isActive": true,
+                "identifier": "doc://com.apple.documentation/documentation/AccountDataTransfer"
+              },
+              "tags": ["App Frameworks"],
+              "languages": ["swift"]
+            }
+          ]
+        },
+        {
+          "name": "App Services",
+          "technologies": [
+            {
+              "title": "Accounts",
+              "destination": {
+                "type": "reference",
+                "isActive": true,
+                "identifier": "doc://com.apple.documentation/documentation/Accounts"
+              },
+              "tags": ["App Services"],
+              "languages": ["occ", "swift"]
+            },
+            {
+              "title": "AdAttributionKit",
+              "destination": {
+                "type": "reference",
+                "isActive": true,
+                "identifier": "doc://com.apple.documentation/documentation/AdAttributionKit"
+              },
+              "tags": ["App Services"],
+              "languages": ["swift"]
+            },
+            {
+              "title": "Address Book",
+              "destination": {
+                "type": "reference",
+                "isActive": true,
+                "identifier": "doc://com.apple.documentation/documentation/AddressBook"
+              },
+              "tags": ["App Services"],
+              "languages": ["occ", "swift"]
+            }
+          ]
+        },
+        {
+          "name": "Developer Tools",
+          "technologies": [
+            {
+              "title": "Analytics Reports",
+              "destination": {
+                "type": "reference",
+                "isActive": true,
+                "identifier": "doc://com.apple.documentation/documentation/analytics-reports"
+              },
+              "tags": ["Developer Tools"],
+              "languages": ["swift"]
+            },
+            {
+              "title": "Automator",
+              "destination": {
+                "type": "reference",
+                "isActive": true,
+                "identifier": "doc://com.apple.documentation/documentation/Automator"
+              },
+              "tags": ["Developer Tools"],
+              "languages": ["occ", "swift"]
+            },
+            {
+              "title": "DeveloperToolsSupport",
+              "destination": {
+                "type": "reference",
+                "isActive": true,
+                "identifier": "doc://com.apple.documentation/documentation/DeveloperToolsSupport"
+              },
+              "tags": ["Developer Tools"],
+              "languages": ["swift"]
+            }
+          ]
+        }
       ]
     }
   ],
