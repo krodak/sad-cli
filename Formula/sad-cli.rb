@@ -3,7 +3,7 @@ class SadCli < Formula
   homepage "https://github.com/krodak/sad-cli"
   url "https://github.com/krodak/sad-cli/archive/refs/tags/v#{version}.tar.gz"
   version "0.1.1"
-  sha256 "PLACEHOLDER"
+  sha256 "74dc877708ac31b266552e3f07b44cd8a685d4b88267c12fb7b1f26ec4184cce"
   license "MIT"
 
   depends_on xcode: ["16.0", :build]
